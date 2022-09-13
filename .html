@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+    </head>
+    <body>
+        <div id="message">
+        </div>
+        <form>
+            <hr/>
+            <label>ABC：</label>
+            <input type="text"  name="ABC"  id="inputABC"  maxlength="100" value="">
+            <br/>
+            <label>XYZ：</label>
+            <input type="text" name="XYZ" id="inputXYZ" value="">
+            <br/>
+            <label>DEF：</label>
+            <input type="text" name="DEF" id="inputDEF" maxlength="100" value="">
+            <br/>
+            <label>oen：</label>
+            <input type="text" name="one" id="inputone" value="">
+            <label>zero：</label>
+            <input type="text" name="zero" id="inputzero" value="">
+            <label>alphabet：</label>
+            <input type="text" name="alphabet" id="inputalphabet" value="">
+            <input type="button" id="btnSubmit" value="送信する">
+            <hr/>
+        </form>
+    </body>
+    <script>
+        window.onload = function(){
+            /*各画面オブジェクト*/
+            const btnSubmit = document.getElementById('btnSubmit');
+            const inputABC = document.getElementById('inputABC');
+            const inputXYZ = document.getElementById('inputXYZ');
+            const inputDEF = document.getElementById('inputDEF');
+            const inputone = document.getElementById('inputone');
+            const inputzero = document.getElementById('inputzero');
+            const inputalphabet = document.getElementById('inputalphabet');
+            const ABCreg = /^ABC.*$/
+            const XYZreg =/^ABC.*XYZ$/
+            const DEFreg =/DEF/
+            const onereg =/.@./
+            const zeroreg =/^[0-9]{3}$/
+            const alphabetrega =/[a-z0-9]/
+
+
+            
+            
+            btnSubmit.addEventListener('click', function(event) {
+                let message = [];
+                /*入力値チェック*/
+                if(inputABC.value ==""){
+                    message.push("文字が未入力です。");
+                }else if(ABCreg.test(inputABC.value)){
+                    message.push("文字の形式が不正です。");
+                }
+
+                if(inputXYZ.value==""){
+                    message.push("文字が未入力です。");
+                }else if(XYZreg.test(inputXYZ.value)){
+                    message.push("文字の形式が不正です。");
+                }    
+  
+                if(inputDEF.value==""){
+                    message.push("文字が未入力です。");
+                }else if(DEFreg.test(inputDEF.value)){
+                    message.push("文字の形式が不正です。");
+                }
+                
+                if(inputone.value==""){
+                    message.push("文字が未入力です。");
+                }else if(onereg.test(inputone.value)){
+                    message.push("文字の形式が不正です。");
+                }
+                
+                if(inputzero.value==""){
+                    message.push("文字が未入力です。");
+                }else if(zeroreg.test(inputzero.value)){
+                    message.push("文字の形式が不正です。");
+                }
+
+                if(inputalphabet.value==""){
+                    message.push("文字が未入力です。");
+                }else if(alphabetreg.test(inputalphabet.value)){
+                    message.push("文字の形式が不正です。");
+                }
+                
+                if(message.length > 0){
+                    alert(message);
+                    return;
+                }
+                alert('入力チェックOK');
+            }); 
+        }
+    </script>
+</html>
